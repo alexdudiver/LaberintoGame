@@ -6,9 +6,10 @@ using UnityEngine;
 public class Movimiento : MonoBehaviour
 {  
     // variables
-    float speed = 9.0f;
+   public  float speed = 0f;
    float originalXposition,originalYposition,originalZposition;
-    
+    public GameManager GM;
+
    // Start is called before the first frame update
     void Start()
     {
@@ -42,14 +43,17 @@ public class Movimiento : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "enemie") ;
+        if (collision.tag == "enemie") 
         {
             RestarPositionPlayer();
+            GM.GameOverMenu();
 
         }
-        if (collision.tag == "Ganaste ;D") ;
+        if (collision.tag == "Ganaste ;D") 
+
         {
             RestarPositionPlayer();
+            GM.GameOverMenu();
 
         }
 

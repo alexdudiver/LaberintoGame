@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Collections;
@@ -6,8 +7,9 @@ using UnityEngine;
 public class Movimiento : MonoBehaviour
 {  
     // variables
-    float speed = 9.0f;
+    public float speed = 0f;
    float originalXposition,originalYposition,originalZposition;
+   public GameManager GM;
     
    // Start is called before the first frame update
     void Start()
@@ -29,7 +31,7 @@ public class Movimiento : MonoBehaviour
         transform.Translate(Input.GetAxis("Horizontal") *speed*Time.deltaTime, Input.GetAxis("Vertical")*speed*Time.deltaTime,0);
 
     }
-    private void RestarPositionPlayer() 
+    public void RestarPositionPlayer() 
     
         
     
@@ -44,21 +46,25 @@ public class Movimiento : MonoBehaviour
     {
         if (collision.tag == "enemie") ;
         {
-            RestarPositionPlayer();
+            GM.GameOverMenu();
 
         }
         if (collision.tag == "Ganaste ;D") ;
         {
-            RestarPositionPlayer();
+            GM.GameOverMenu();
 
         }
 
-
+        
 
         
     }
 
+    internal void RestartPlayerPosition()
+    {
+        throw new NotImplementedException();
     }
+}
 
 
 
